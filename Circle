@@ -1,0 +1,25 @@
+package Shawn.com;
+import javax.swing.JOptionPane;
+
+public class Circleclass {
+	static double diameter;
+	static double circumference;
+	static double area;
+	String firstNumber;
+	static int number1;
+	public static void main(String[] args) {
+		
+		 String firstNumber = JOptionPane.showInputDialog("Please enter Radius (integer) for aspects of a circle:"); 
+		number1 = Integer.parseInt (firstNumber);
+		
+		diameter = 2 * number1;
+		circumference = 2 * Math.PI * number1;
+		area = Math.PI * number1 * number1;
+		
+		//display results
+		JOptionPane.showMessageDialog(null,"These are the results:\n" + "\nDiameter:\n" + diameter + "\nCircumference:\n" + circumference  + "\nArea:\n" + area);
+		System.exit(0);
+
+	}
+
+}
