@@ -1,0 +1,86 @@
+//calculates the Area of an Office
+//Programmer Shawn Damratowski
+
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class InheritanceTest {
+	JFrame myFrame;
+	JLabel lengthLabel;
+	JTextField lengthTextField;
+	JLabel widthLabel;
+	JTextField widthTextField;
+	JButton calculateButton;
+	JButton exitButton;
+	JLabel areaLabel;
+	JTextField areaTextField;
+
+	public InheritanceTest() {
+		myFrame = new JFrame("Office Area Calculator");
+		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		myFrame.setSize(270, 150);
+		myFrame.setLocationRelativeTo(null);
+
+		FocusListener clearFields = new FocusListener() {
+			public void focusLost(FocusEvent e) {
+			}
+
+			public void focusGained(FocusEvent e) {
+				areaTextField.setText(null);
+			}
+		};
+
+		lengthLabel = new JLabel("Enter the length of the office:");
+		lengthTextField = new JTextField(4);
+		lengthTextField.addFocusListener(clearFields);
+
+		widthLabel = new JLabel("Enter the width of the office:");
+		widthTextField = new JTextField(4);
+		widthTextField.addFocusListener(clearFields);
+
+		calculateButton = new JButton("Calculate");
+		calculateButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				double length, width, area;
+				length = Double.parseDouble(lengthTextField.getText());
+				width = Double.parseDouble(widthTextField.getText());
+				area = length * width;
+				areaTextField.setText(String.valueOf(area));
+			}
+		});
+
+		exitButton = new JButton("Exit");
+		exitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
+
+		areaLabel = new JLabel("Area of the office:");
+		areaTextField = new JTextField(8);
+
+		myFrame.setLayout(new FlowLayout());
+		myFrame.add(lengthLabel);
+		myFrame.add(lengthTextField);
+		myFrame.add(widthLabel);
+		myFrame.add(widthTextField);
+		myFrame.add(calculateButton);
+		myFrame.add(exitButton);
+		myFrame.add(areaLabel);
+		myFrame.add(areaTextField);
+		myFrame.setVisible(true);
+	}
+
+	public static void main(String[] args) {
+		new InheritanceTest();
+	}
+}
